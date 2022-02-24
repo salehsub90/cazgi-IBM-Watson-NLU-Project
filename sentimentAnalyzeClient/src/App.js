@@ -11,7 +11,6 @@ class App extends React.Component {
   is set to text
   */
   state = {
-    title: "Sentiment Analyzer",
     innercomp: <textarea rows="4" cols="50" id="textinput" />,
     mode: "text",
     sentimentOutput: [],
@@ -100,7 +99,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <title>{this.state.title}</title>
+        <title>{this.props.title}</title>
         <button
           className="btn btn-info"
           onClick={() => {

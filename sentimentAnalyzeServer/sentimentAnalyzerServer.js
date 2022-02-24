@@ -39,7 +39,6 @@ app.get("/", (req, res) => {
 
 //The endpoint for the webserver ending with /url/emotion
 app.get("/url/emotion", (req, res) => {
-  //Extract the url passed from the client through the request object
   let urlToAnalyze = req.query.url;
   const analyzeParams = {
     url: urlToAnalyze,
@@ -50,11 +49,13 @@ app.get("/url/emotion", (req, res) => {
       },
     },
   };
+
   const naturalLanguageUnderstanding = getNLUInstance();
+
   naturalLanguageUnderstanding
     .analyze(analyzeParams)
     .then((analysisResults) => {
-      //Please refer to the image to see the order of retrieval
+      //Retrieve the emotion and return it as a formatted string
       return res.send(analysisResults.result.keywords[0].emotion, null, 2);
     })
     .catch((err) => {
@@ -74,10 +75,14 @@ app.get("/url/sentiment", (req, res) => {
       },
     },
   };
+
   const naturalLanguageUnderstanding = getNLUInstance();
+
   naturalLanguageUnderstanding
     .analyze(analyzeParams)
     .then((analysisResults) => {
+      //Retrieve the sentiment and return it as a formatted string
+
       return res.send(analysisResults.result.keywords[0].sentiment, null, 2);
     })
     .catch((err) => {
@@ -97,10 +102,14 @@ app.get("/text/emotion", (req, res) => {
       },
     },
   };
+
   const naturalLanguageUnderstanding = getNLUInstance();
+
   naturalLanguageUnderstanding
     .analyze(analyzeParams)
     .then((analysisResults) => {
+      //Retrieve the emotion and return it as a formatted string
+
       return res.send(analysisResults.result.keywords[0].emotion, null, 2);
     })
     .catch((err) => {
@@ -119,10 +128,14 @@ app.get("/text/sentiment", (req, res) => {
       },
     },
   };
+
   const naturalLanguageUnderstanding = getNLUInstance();
+
   naturalLanguageUnderstanding
     .analyze(analyzeParams)
     .then((analysisResults) => {
+      //Retrieve the sentiment and return it as a formatted string
+
       return res.send(analysisResults.result.keywords[0].sentiment, null, 2);
     })
     .catch((err) => {
