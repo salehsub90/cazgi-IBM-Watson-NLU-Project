@@ -96,10 +96,13 @@ class App extends React.Component {
     });
   };
 
+  componentDidMount() {
+    document.title = "Sentiment Analyzer";
+  }
+
   render() {
     return (
       <div className="App">
-        <title>{this.props.title}</title>
         <button
           className="btn btn-info"
           onClick={() => {
